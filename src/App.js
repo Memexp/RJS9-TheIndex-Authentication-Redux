@@ -15,6 +15,8 @@ import Login from "./LoginForm";
 class App extends Component {
   componentDidMount() {
     this.props.fetchAllAuthors();
+    // the refresher... lol
+    this.props.checkToken();
   }
 
   render() {
@@ -41,7 +43,8 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllAuthors: () => dispatch(actionCreators.fetchAuthors())
+    fetchAllAuthors: () => dispatch(actionCreators.fetchAuthors()),
+    checkToken: () => dispatch(actionCreators.checkForExpiredToken())
   };
 };
 

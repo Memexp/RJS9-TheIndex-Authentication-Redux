@@ -23,7 +23,8 @@ class AuthorsList extends Component {
           <h3>Authors</h3>
           <SearchBar />
           <div className="row">
-            <AddAuthorCard /> {authorCards}
+            {this.props.user && <AddAuthorCard />}
+            {authorCards}
           </div>
         </div>
       );
@@ -34,7 +35,8 @@ class AuthorsList extends Component {
 const mapStateToProps = state => {
   return {
     loading: state.rootAuthors.loading,
-    filteredAuthors: state.rootAuthors.filteredAuthors
+    filteredAuthors: state.rootAuthors.filteredAuthors,
+    user: state.rootAuth.user
   };
 };
 
